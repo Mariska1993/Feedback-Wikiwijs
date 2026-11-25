@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wat vind jij van mijn Wikiwijs?</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 25px 15px;
+    background: #f3f2ec;
+    font-family: Arial, sans-serif;
+    color: #192f3a;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0 25px;
+    border-bottom: 1px solid #dddcd5;
+    font-weight: bold;
+}
+
+.logo {
+    background: #192f3a;
+    color: #d8eb80;
+    padding: 13px;
+    border-radius: 0 0 15px 15px;
+    font-weight: bold;
+}
+
+.intro {
+    padding: 45px 0 25px;
+}
+
+.tag {
+    display: inline-block;
+    border: 2px solid #c4d0c6;
+    border-radius: 30px;
+    padding: 14px 24px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(38px, 8vw, 65px);
+    line-height: 1.15;
+    margin: 35px 0 25px;
+}
+
+.intro p {
+    color: #647075;
+    font-size: 19px;
+    line-height: 1.5;
+}
+
+.form-card {
+    background: white;
+    border-radius: 38px;
+    padding: 40px 35px;
+    border-top: 9px solid #d8eb80;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.04);
+}
+
+h2 {
+    font-family: Georgia, serif;
+    font-size: 36px;
+    margin: 0 0 12px;
+}
+
+.subtitle {
+    color: #647075;
+    margin-bottom: 45px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 30px 0 14px;
+    font-size: 18px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 20px;
+    border: 2px solid #d3d8d4;
+    border-radius: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    color: #192f3a;
+    background: #fcfcf9;
+    outline: none;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #a8c8ad;
+}
+
+textarea {
+    min-height: 180px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #e2e2df;
+    margin: 40px 0;
+}
+
+.download-button {
+    width: 100%;
+    max-width: 700px;
+    padding: 22px;
+    background: #192f3a;
+    color: white;
+    border: none;
+    border-radius: 17px;
+    font-size: 19px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: background 0.3s;
+}
+
+.download-button:hover {
+    background: #294b59;
+}
+
+.download-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.message {
+    margin-top: 18px;
+    color: #647075;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px 10px;
+    }
+
+    .form-card {
+        padding: 30px 22px;
+        border-radius: 30px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    .intro p {
+        font-size: 17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="completePage">
+
+    <div class="header">
+        <span class="logo">W.</span>
+        <span>WIKIWJS / FEEDBACK</span>
+    </div>
+
+    <div class="intro">
+
+        <span class="tag">
+            JOUW KIJK OP MIJN WIKIWJS
+        </span>
+
+        <h1>Wat vind jij van mijn Wikiwijs?</h1>
+
+        <p>
+            Jouw eerlijke feedback helpt me om het
+            lesmateriaal beter te maken. Vertel wat werkt,
+            wat anders kan en welke ideeën je hebt.
+        </p>
+
+    </div>
+
+    <div class="form-card">
+
+        <h2>Deel je feedback</h2>
+
+        <p class="subtitle">
+            Velden met een * zijn verplicht.
+        </p>
+
+        <form id="feedbackForm">
+
+            <label for="naam">
+                Je naam (optioneel)
+            </label>
+
+            <input
+                type="text"
+                id="naam"
+                name="naam"
+                placeholder="Hoe mogen we je noemen?">
+
+            <hr>
+
+            <label for="mening">
+                Wat is je algemene mening? *
+            </label>
+
+            <textarea
+                id="mening"
+                name="mening"
+                placeholder="Vertel hoe je het Wikiwijs in het algemeen vindt..."
+                required></textarea>
+
+            <label for="goed">
+                Wat vind je goed? *
+            </label>
+
+            <textarea
+                id="goed"
+                name="goed"
+                placeholder="Welke onderdelen werken volgens jou goed?"
+                required></textarea>
+
+            <label for="beter">
+                Wat kan beter? *
+            </label>
+
+            <textarea
+                id="beter"
+                name="beter"
+                placeholder="Waar zie je ruimte voor verbetering?"
+                required></textarea>
+
+            <label for="suggesties">
+                Heb je nog suggesties?
+            </label>
+
+            <textarea
+                id="suggesties"
+                name="suggesties"
+                placeholder="Alle ideeën zijn welkom..."></textarea>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- DOWNLOADKNOP -->
+
+<div class="container">
+
+    <button
+        type="button"
+        class="download-button"
+        id="downloadButton"
+        onclick="downloadFeedback()">
+
+        Download mijn gegeven feedback
+
+    </button>
+
+    <p class="message" id="message">
+        Download jouw complete ingevulde feedback
+        als mooie lichtgroene afbeelding.
+    </p>
+
+</div>
+
+<script>
+
+async function downloadFeedback() {
+
+    const form = document.getElementById("feedbackForm");
+
+    if (!form.reportValidity()) {
+        return;
+    }
+
+    const button = document.getElementById("downloadButton");
+    const message = document.getElementById("message");
+    const original = document.getElementById("completePage");
+
+    if (typeof html2canvas === "undefined") {
+        message.textContent =
+            "De afbeeldingstool kon niet worden geladen. Controleer je internetverbinding.";
+        return;
+    }
+
+    button.disabled = true;
+    button.textContent = "Afbeelding wordt gemaakt...";
+
+    try {
+
+        // Maak een brede kopie van het formulier.
+        const canvas = await html2canvas(original, {
+
+            scale: 2,
+            backgroundColor: "#e3f2d5",
+            useCORS: true,
+            windowWidth: 1100,
+            width: 1100,
+            logging: false,
+
+            onclone: function(clonedDocument) {
+
+                const clone =
+                    clonedDocument.getElementById("completePage");
+
+                // Brede afbeelding instellen.
+                clone.style.width = "1100px";
+                clone.style.maxWidth = "1100px";
+                clone.style.padding = "45px";
+                clone.style.margin = "0";
+                clone.style.backgroundColor = "#e3f2d5";
+
+                // De formulierkaart lichtgroen maken.
+                const card = clone.querySelector(".form-card");
+
+                card.style.backgroundColor = "#f7fff1";
+                card.style.borderRadius = "30px";
+                card.style.padding = "50px";
+                card.style.boxShadow = "none";
+
+                // Titel groter maken.
+                const heading = clone.querySelector("h1");
+
+                heading.style.fontSize = "65px";
+
+                // Ingevulde velden omzetten naar zichtbare tekst.
+                const originalFields =
+                    original.querySelectorAll("input, textarea");
+
+                const clonedFields =
+                    clone.querySelectorAll("input, textarea");
+
+                originalFields.forEach((field, index) => {
+
+                    const display =
+                        clonedDocument.createElement("div");
+
+                    const style = window.getComputedStyle(field);
+
+                    display.style.width = "100%";
+
+                    display.style.minHeight =
+                        field.tagName === "TEXTAREA"
+                        ? "180px"
+                        : "auto";
+
+                    display.style.padding = style.padding;
+                    display.style.border = style.border;
+                    display.style.borderRadius = style.borderRadius;
+
+                    display.style.fontFamily = "Arial, sans-serif";
+                    display.style.fontSize = "18px";
+                    display.style.lineHeight = "1.6";
+
+                    display.style.color = "#192f3a";
+                    display.style.background = "#ffffff";
+
+                    display.style.whiteSpace = "pre-wrap";
+                    display.style.overflowWrap = "anywhere";
+
+                    display.textContent =
+                        field.value.trim() || "Geen antwoord ingevuld";
+
+                    clonedFields[index].replaceWith(display);
+
+                });
+
+                // Formulierbreedte en tekst goed uitlijnen.
+                clone.style.height = "auto";
+            }
+
+        });
+
+        // PNG-bestand maken.
+        const link = document.createElement("a");
+
+        link.download = "mijn-wikiwijs-feedback.png";
+
+        link.href = canvas.toDataURL("image/png");
+
+        document.body.appendChild(link);
+
+        link.click();
+
+        link.remove();
+
+        message.textContent =
+            "Je volledige feedback is gedownload als afbeelding!";
+
+    } catch (error) {
+
+        console.error(error);
+
+        message.textContent =
+            "Er ging iets mis bij het maken van de afbeelding. Probeer opnieuw.";
+
+    } finally {
+
+        button.disabled = false;
+
+        button.textContent =
+            "Download mijn gegeven feedback";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
